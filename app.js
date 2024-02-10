@@ -15,7 +15,7 @@ app.use(cors());
 
 
 const googleMapsController = require("./controllers/googleMapsController")
-app.use("/googleMaps", usersController)
+app.use("/googleMaps", googleMapsController)
 
 module.exports = app
 
