@@ -12,4 +12,7 @@ app.get("/", (req, res) => {
 const googleMapsController = require("./controllers/googleMapsController");
 app.use("/googleMaps", googleMapsController);
 
+const usersController = require("./controllers/usersController.js")
+app.use("/users", usersController)
+
 module.exports = app;
