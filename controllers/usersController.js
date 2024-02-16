@@ -58,8 +58,10 @@ users.post("/", checkUsername,
                 newUser.password = hash
                 try {
                     newUser.photourl = !newUser.photourl ? "profile image" : newUser.photourl
+                    newUser.displayname = !newUser.displayname ? "first last" : newUser.displayname
                     newUser.firstname = !newUser.firstname ? "unknown first name" : newUser.firstname
                     newUser.lastname = !newUser.lastname ? "unknown last name" : newUser.lastname
+                    newUser.active = !newUser.active ? true : newUser.active
                     newUser.about = !newUser.about ? "about me" : newUser.about
                     newUser.dob = !newUser.dob ? "1/1/2024" : newUser.dob
                     let createdUser = await createUser(newUser)
@@ -106,10 +108,12 @@ users.put("/:user_id", checkUserIndex,
         try {
             const { user_id } = req.params
             const userToUpdate = req.body
+            userToUpdate.displayname = !userToUpdate.displayname ? "first last" : userToUpdate.displayname
             userToUpdate.photourl = !userToUpdate.photourl ? "profile image" : userToUpdate.photourl
             userToUpdate.firstname = !userToUpdate.firstname ? "unknown first name" : userToUpdate.firstname
             userToUpdate.lastname = !userToUpdate.lastname ? "unknown last name" : userToUpdate.lastname
             userToUpdate.about = !userToUpdate.about ? "about me" : userToUpdate.about
+            userToUpdate.active = !userToUpdate.active ? true : userToUpdate.active
             userToUpdate.dob = !userToUpdate.dob ? "00/00/0000" : userToUpdate.dob
             let updatedUser = await updateUser(user_id, userToUpdate)
             if (updatedUser.user_id) {

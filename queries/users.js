@@ -45,19 +45,23 @@ const createUser = async (user) => {
     try {
         const createdUser = await db.one(`INSERT INTO users (firstname,` +
             ` lastname,` +
+            ` displayname,` +
             ` email,` +
             ` password,` +
             ` username,` +
             ` photourl,` +
             ` about,` +
-            ` dob) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+            ` active,` +
+            ` dob) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
             [user.firstname,
             user.lastname,
+            user.displayname,
             user.email,
             user.password,
             user.username,
             user.photourl,
             user.about,
+            user.active,
             user.dob])
         return createdUser
     }
@@ -94,12 +98,12 @@ const deleteUser = async (user_id) => {
 
 const updateUser = async (user_id, user) => {
     try {
-        const { firstname, lastname, photourl, about, dob } = user
+        const { firstname, lastname, photourl, about, dob, displayname, active } = user
         const updatedUser = await db.one(
             `UPDATE users SET firstname=$1, lastname=$2, ` +
-            `photourl=$3, about=$4, dob=$5 WHERE user_id=$6 ` +
+            `photourl=$3, about=$4, dob=$5, displayname=$6, active=$7, WHERE user_id=$8 ` +
             `RETURNING *`,
-            [firstname, lastname, photourl, about, dob, user_id]
+            [firstname, lastname, photourl, about, dob, displayname, active, user_id]
         )
         return updatedUser
     }
