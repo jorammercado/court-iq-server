@@ -21,12 +21,18 @@ CREATE TABLE users (
 CREATE TABLE players (
  player_id SERIAL PRIMARY KEY,
  player TEXT NOT NULL,
- birth_year TEXT
+ birth_year TEXT DEFAULT "unknown",
+ age INT DEFAULT 0,
+ season INT DEFAULT 0,
+ experience INT DEFAULT 0,
+ pos TEXT DEFAULT "unknown",
+ tm TEXT DEFAULT "unknown"
 );
 
-CREATE TABLE season (
+CREATE TABLE seasons (
     season_id SERIAL PRIMARY KEY,
     season INT NOT NULL,
+    player TEXT NOT NULL,
     pos TEXT DEFAULT "unknown",
     age INT DEFAULT 0,
     experience INT DEFAULT 0,
