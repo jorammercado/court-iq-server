@@ -13,7 +13,7 @@ const {
     checkPlayerName,
 } = require("../validations/checkPlayers")
 
-const seasonsController = require("./seasonsController.js")
+const seasonsController = require("./seasonsTablePerGameController.js")
 players.use("/:player_id/seasons", seasonsController)
 
 players.get("/", checkPlayers, async (req, res) => {
