@@ -21,23 +21,23 @@ CREATE TABLE users (
 CREATE TABLE players (
  player_id SERIAL PRIMARY KEY,
  player TEXT NOT NULL,
- birth_year TEXT DEFAULT "unknown",
+ birth_year TEXT DEFAULT 'unknown',
  age INT DEFAULT 0,
  season INT DEFAULT 0,
  experience INT DEFAULT 0,
- pos TEXT DEFAULT "unknown",
- tm TEXT DEFAULT "unknown"
+ pos TEXT DEFAULT 'unknown',
+ tm TEXT DEFAULT 'unknown'
 );
 
 CREATE TABLE seasons (
     season_id SERIAL PRIMARY KEY,
     season INT NOT NULL,
     player TEXT NOT NULL,
-    pos TEXT DEFAULT "unknown",
+    pos TEXT DEFAULT 'unknown',
     age INT DEFAULT 0,
     experience INT DEFAULT 0,
-    lg TEXT DEFAULT "NBA",
-    tm TEXT DEFAULT "unknown",
+    lg TEXT DEFAULT 'NBA',
+    tm TEXT DEFAULT 'unknown',
     g INT DEFAULT 0,
     gs INT DEFAULT 0,
     mp_per_game INT DEFAULT 0,
