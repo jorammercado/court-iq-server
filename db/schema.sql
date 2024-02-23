@@ -17,3 +17,46 @@ CREATE TABLE users (
     active BOOLEAN DEFAULT true,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+CREATE TABLE players (
+ player_id SERIAL PRIMARY KEY,
+ player TEXT NOT NULL,
+ birth_year TEXT
+);
+
+CREATE TABLE season (
+    season_id SERIAL PRIMARY KEY,
+    season INT NOT NULL,
+    pos TEXT DEFAULT "unknown",
+    age INT DEFAULT 0,
+    experience INT DEFAULT 0,
+    lg TEXT DEFAULT "NBA",
+    tm TEXT DEFAULT "unknown",
+    g INT DEFAULT 0,
+    gs INT DEFAULT 0,
+    mp_per_game INT DEFAULT 0,
+    fg_per_game INT DEFAULT 0,
+    fga_per_game INT DEFAULT 0,
+    fg_percent INT DEFAULT 0,
+    x3p_per_game INT DEFAULT 0,
+    x3pa_per_game INT DEFAULT 0,
+    x3p_percent INT DEFAULT 0,
+    x2p_per_game INT DEFAULT 0,
+    x2pa_per_game INT DEFAULT 0,
+    x2p_percent INT DEFAULT 0,
+    e_fg_percent INT DEFAULT 0,
+    ft_per_game INT DEFAULT 0,
+    fta_per_game INT DEFAULT 0,
+    ft_percent INT DEFAULT 0,
+    orb_per_game INT DEFAULT 0,
+    drb_per_game INT DEFAULT 0,
+    trb_per_game INT DEFAULT 0,
+    ast_per_game INT DEFAULT 0,
+    stl_per_game INT DEFAULT 0,
+    blk_per_game INT DEFAULT 0,
+    tov_per_game INT DEFAULT 0,
+    pf_per_game INT DEFAULT 0,
+    pts_per_game INT DEFAULT 0,
+    player_id INTEGER REFERENCES players (player_id)
+    ON DELETE CASCADE
+);
