@@ -15,7 +15,7 @@ app.use("/googleMaps", googleMapsController);
 const usersController = require("./controllers/usersController.js")
 app.use("/users", usersController)
 
-// const playersTablePerGameController = require("./controllers/playersTablePerGameController.js")
-// app.use("/playerstablepergame", playersTablePerGameController)
+const playersTablePerGameController = require("./controllers/playersTablePerGameController.js")
+app.use("/playerstablepergame", playersTablePerGameController)
 
 module.exports = app;
