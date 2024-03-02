@@ -2,11 +2,11 @@ const express = require("express")
 const playerimage = express.Router()
 const {
     getAllPlayerImages,
-    getOnePlayerImageByName,
+    getPlayerImageByName,
     deletePlayerImage,
     createPlayerImage,
     updatePlayerImage
-} = require("../queries/playerImages")
+} = require("../queries/playersImages")
 const {
     checkPlayerImages,
     checkPlayerImageName,
@@ -26,7 +26,7 @@ playerimage.get("/", checkPlayerImages, async (req, res) => {
 playerimage.get("/:player", checkPlayerImageName, async (req, res) => {
     try {
         const { player } = req.params
-        const playerImage = await getOnePlayerImageByName(player)
+        const playerImage = await getPlayerImageByName(player)
         res.status(200).json(playerImage)
     }
     catch (error) {
@@ -66,11 +66,10 @@ playerimage.put("/:player", checkPlayerImageNameExists,
     checkPlayerImageName,
     async (req, res) => {
         try {
-            const { player } = req.params
             const playerImageData = req.body
             playerImageData.birth_year = !playerImageData.birth_year ? 0 : playerImageData.birth_year
             playerImageData.death_year = !playerImageData.death_year ? 0 : playerImageData.death_year
-            const updatedPlayerImage = await updatePlayerImage(player, playerImageData)
+            const updatedPlayerImage = await updatePlayerImage(playerImageData)
             if (updatedPlayerImage.player_id) {
                 res.status(200).json(updatedPlayerImage)
             } else {
