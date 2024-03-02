@@ -23,9 +23,10 @@ playerimage.get("/", checkPlayerImages, async (req, res) => {
     }
 })
 
-playerimage.get("/:player", checkPlayerImageName, async (req, res) => {
+playerimage.get("/:player", async (req, res) => {
     try {
         const { player } = req.params
+        console.log(player)
         const playerImage = await getPlayerImageByName(player)
         res.status(200).json(playerImage)
     }
@@ -34,7 +35,7 @@ playerimage.get("/:player", checkPlayerImageName, async (req, res) => {
     }
 })
 
-playerimage.delete("/:player", checkPlayerImageName, async (req, res) => {
+playerimage.delete("/:player", async (req, res) => {
     try {
         const { player } = req.params;
         const deletedPlayerImage = await deletePlayerImage(player)
