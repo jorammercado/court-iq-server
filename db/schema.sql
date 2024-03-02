@@ -71,5 +71,5 @@ CREATE TABLE playersimage (
  player_id SERIAL PRIMARY KEY,
  player TEXT NOT NULL,
  birth_date Text DEFAULT 'unknown',
- image_url_number TEXT DEFAULT 'unknown'
+ image_url TEXT DEFAULT 'unknown'
 );
