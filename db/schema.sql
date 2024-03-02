@@ -70,6 +70,6 @@ CREATE TABLE seasons (
 CREATE TABLE playersimage (
  player_id SERIAL PRIMARY KEY,
  player TEXT NOT NULL,
- birth_date Text DEFAULT 'unknown',
+ birth_date TEXT DEFAULT 'unknown',
  image_url TEXT DEFAULT 'unknown'
 );
