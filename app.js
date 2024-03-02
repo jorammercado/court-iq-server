@@ -18,4 +18,7 @@ app.use("/users", usersController)
 const playersTablePerGameController = require("./controllers/playersTablePerGameController.js")
 app.use("/playerstablepergame", playersTablePerGameController)
 
+const playersImageController = require("./controllers/playersImageController.js")
+app.use("/playerimages", playersImageController)
+
 module.exports = app;

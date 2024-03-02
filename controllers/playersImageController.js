@@ -11,7 +11,7 @@ const {
     checkPlayerImages,
     checkPlayerImageName,
     checkPlayerImageNameExists,
-} = require("../validations/checkPlayerImages")
+} = require("../validations/checkPlayersImage")
 
 playerimage.get("/", checkPlayerImages, async (req, res) => {
     try {
