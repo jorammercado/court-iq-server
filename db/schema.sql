@@ -66,3 +66,10 @@ CREATE TABLE seasons (
     player_id INTEGER REFERENCES players (player_id)
     ON DELETE CASCADE
 );
+
+CREATE TABLE playersimage (
+ player_id SERIAL PRIMARY KEY,
+ player TEXT NOT NULL,
+ birth_date Text DEFAULT 'unknown',
+ image_url_number TEXT DEFAULT 'unknown'
+);
