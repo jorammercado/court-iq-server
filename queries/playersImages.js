@@ -12,7 +12,8 @@ const getAllPlayerImages = async () => {
 
 const getPlayerImageByName = async (player) => {
     try {
-        const playerImage = await db.one(`SELECT * FROM playersimage WHERE player=${player.replace(/["]/g, "'")}`)
+        const playerImage = await db.one(`SELECT * FROM playersimage WHERE player=$1`,
+        player)
         return playerImage
     }
     catch (err) {

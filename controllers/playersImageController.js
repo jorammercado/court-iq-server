@@ -26,7 +26,6 @@ playerimage.get("/", checkPlayerImages, async (req, res) => {
 playerimage.get("/:player", async (req, res) => {
     try {
         const { player } = req.params
-        console.log(player)
         const playerImage = await getPlayerImageByName(player)
         res.status(200).json(playerImage)
     }
