@@ -21,4 +21,7 @@ app.use("/playerstablepergame", playersTablePerGameController)
 const playersImageController = require("./controllers/playersImageController.js")
 app.use("/playerimages", playersImageController)
 
+const flaskController = require("./controllers/flaskController.js")
+app.use("/flask", flaskController)
+
 module.exports = app;
