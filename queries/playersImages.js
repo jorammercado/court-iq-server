@@ -12,9 +12,11 @@ const getAllPlayerImages = async () => {
 
 const getPlayerImageByName = async (player) => {
     try {
-        const playerImage = await db.one(`SELECT * FROM playersimage WHERE player=$1`,
-        player)
-        return playerImage
+        const playerImage = await db.oneOrNone(`SELECT * FROM playersimage WHERE player=$1`, [player]);
+        if (playerImage) return playerImage
+        console.log("DEFAULT", player)
+        const defaultImg = await db.one(`SELECT * FROM playersimage WHERE player='default'`);
+        return defaultImg
     }
     catch (err) {
         return { err: `${err}, sql query error - get one player's image` }
