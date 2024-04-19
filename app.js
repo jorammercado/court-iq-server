@@ -24,4 +24,10 @@ app.use("/playerimages", playersImageController)
 const flaskController = require("./controllers/flaskController.js")
 app.use("/flask", flaskController)
 
+const teamsPropsHeadingController = require("./controllers/teamsPageHeadingController.js")
+app.use("/teamspagepropsheading", teamsPropsHeadingController)
+
+const teamsPropsController = require("./controllers/teamsPagePropsController.js")
+app.use("/teamspageprops", teamsPropsController)
+
 module.exports = app;

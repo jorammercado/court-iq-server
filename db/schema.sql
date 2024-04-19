@@ -73,3 +73,20 @@ CREATE TABLE playersimage (
  birth_date TEXT DEFAULT 'unknown',
  image_url TEXT DEFAULT 'unknown'
 );
+
+CREATE TABLE knickspropsheading (
+    heading_id SERIAL PRIMARY KEY,
+    away_team TEXT,
+    home_team TEXT,
+    commence_time TEXT
+);
+
+CREATE TABLE  flattenedprops(
+    prop_id SERIAL PRIMARY KEY,
+    name TEXT,
+    description TEXT,
+    price INT,
+    point INT,
+    bookmaker TEXT,
+    last_update TEXT
+);
