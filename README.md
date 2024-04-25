@@ -1,5 +1,5 @@
-# Capstone Backend Server
-Backend server for React app, links provided below. Currently provides google maps services and shortly will be updated to include user data.
+# Court IQ Server
+Backend server for Court IQ.
 
 Contents
 ========
@@ -7,9 +7,7 @@ Contents
  - [GitHub Repositories](#github-repositories)
  - [Contributors](#contributors)
 
-
 ## Deployed Server Access
-
 
 Deployed server: [Server](https://capstone-qofe.onrender.com/)
 
@@ -18,8 +16,6 @@ Deployed server: [Server](https://capstone-qofe.onrender.com/)
 [FrontEnd](https://github.com/Ericktolentino94/Capstone-front-end)
 
 [BackEnd](https://github.com/Ericktolentino94/Capstone-back-end)
-
-
 
 ## Contributors
 
