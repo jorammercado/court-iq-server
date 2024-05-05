@@ -1,5 +1,5 @@
-# Court IQ Server
-Backend server for Court IQ.
+# InsightWager Server
+Backend server for InsightWager.
 
 Contents
 ========
@@ -9,18 +9,15 @@ Contents
 
 ## Deployed Server Access
 
-Deployed server: [Server](https://capstone-qofe.onrender.com/)
+Deployed server: [Server](https://insightwager.onrender.com)
 
 ## GitHub repositories linked to this server
 
-[FrontEnd](https://github.com/Ericktolentino94/Capstone-front-end)
+[FrontEnd](https://github.com/jorammercado/insightwager-frontend)
 
-[BackEnd](https://github.com/Ericktolentino94/Capstone-back-end)
+[BackEnd](https://github.com/jorammercado/insightwager-backend)
 
 ## Contributors
-
-- Elisaul Batista
-[GitHub](https://github.com/Batista0523)
 
 * Joram Mercado
 [GitHub](https://github.com/jorammercado)
