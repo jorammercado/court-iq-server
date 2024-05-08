@@ -1,5 +1,5 @@
-# InsightWager Server
-Backend server for InsightWager.
+# Court-IQ Server
+Backend server for Court-IQ.
 
 Contents
 ========
@@ -13,9 +13,9 @@ Deployed server: [Server](https://insightwager.onrender.com)
 
 ## GitHub repositories linked to this server
 
-[FrontEnd](https://github.com/jorammercado/insightwager-frontend)
+[FrontEnd](https://github.com/jorammercado/court-iq-frontend)
 
-[BackEnd](https://github.com/jorammercado/insightwager-backend)
+[BackEnd](https://github.com/jorammercado/court-iq-backend)
 
 ## Contributors
 
