@@ -9,13 +9,13 @@ Contents
 
 ## Deployed Server Access
 
-Deployed server: [Server](https://insightwager.onrender.com)
+Deployed server: [Server](https://courtiq.onrender.com)
 
 ## GitHub repositories linked to this server
 
-[FrontEnd](https://github.com/jorammercado/court-iq-frontend)
+[FrontEnd](https://github.com/jorammercado/courtIQ-app)
 
-[BackEnd](https://github.com/jorammercado/court-iq-backend)
+[BackEnd](https://github.com/jorammercado/courtIQ-server)
 
 ## Contributors
 
