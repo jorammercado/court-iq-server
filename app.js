@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Insight Wager");
+    res.send("Welcome to Court-IQ's server");
   })
 
 const googleMapsController = require("./controllers/googleMapsController");
