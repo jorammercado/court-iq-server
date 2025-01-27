@@ -13,8 +13,8 @@ The backend server for Court-IQ ensures efficient data handling and seamless int
 [Live App Server](https://courtiq.onrender.com)
 
 ## GitHub Repositories
-- [FrontEnd](https://github.com/jorammercado/courtIQ-app)
-- [BackEnd](https://github.com/jorammercado/courtIQ-server)
+- [FrontEnd](https://github.com/JoramAMercado/court-iq)
+- [BackEnd](https://github.com/JoramAMercado/court-iq-server)
 
 ## Deployment Location
 [Render](https://dashboard.render.com/login) 
@@ -25,4 +25,4 @@ This project is licensed under the MIT License. See the [LICENSE](https://openso
 ## Contact
 For any inquiries or feedback, please contact:
 
-- Joram Mercado: [GitHub](https://github.com/jorammercado), [LinkedIn](https://www.linkedin.com/in/jorammercado)
+- Joram Mercado: [GitHub](https://github.com/JoramAMercado), [LinkedIn](https://www.linkedin.com/in/joramamercado)
