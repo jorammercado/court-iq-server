@@ -2,7 +2,7 @@
 
 This is the backend service for the Court-IQ platform — a basketball analytics and sports betting application. The server handles player image hosting, stores a rich archive of historical NBA data (50+ years), and includes user management infrastructure built to support future personalization features. While the historical data is not yet surfaced in the frontend, it is fully structured and ready for integration.
 
-Additionally, this backend communicates with a connected Flask microservice that powers the search functionality (currently under development) and is designed to scale with added features.
+It also serves as a middleware layer, forwarding natural language queries to a connected Flask microservice — [court-iq-search](https://github.com/jorammercado/court-iq-search) — which powers the platform’s search bar functionality (currently in the prototype and development stage).
 
 ## Contents
 - [Deployed Server Access](#deployed-server-access)
@@ -65,7 +65,7 @@ Deployed and Hosted on [Render](https://render.com)
    node server.js
    ```
 
-> Note: This server communicates with a Flask microservice for search functionality. You can find it here: [Search Bar](https://github.com/jorammercado/flask-app). At the time of writing, the search system is still under development.
+> Note: This server communicates with a Flask microservice for search functionality. You can find it here: [Search Bar](https://github.com/jorammercado/court-iq-search). At the time of writing, the search system is still under development.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/license/mit) file for details.
