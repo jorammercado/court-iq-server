@@ -1,16 +1,20 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
+const express = require("express")
+const cors = require("cors")
+const app = express()
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json())
+app.use(cors())
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Court-IQ's server");
-  })
+  res.send("Welcome to Court-IQ's server")
+})
 
-const googleMapsController = require("./controllers/googleMapsController");
-app.use("/googleMaps", googleMapsController);
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong")
+})
+
+const googleMapsController = require("./controllers/googleMapsController")
+app.use("/googleMaps", googleMapsController)
 
 const usersController = require("./controllers/usersController.js")
 app.use("/users", usersController)
@@ -30,4 +34,4 @@ app.use("/teamspagepropsheading", teamsPropsHeadingController)
 const teamsPropsController = require("./controllers/teamsPagePropsController.js")
 app.use("/teamspageprops", teamsPropsController)
 
-module.exports = app;
+module.exports = app
