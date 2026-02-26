@@ -6,33 +6,33 @@ Additionally, it serves as middleware, forwarding search queries to a Flask-base
 
 ## 📁 Contents
 
-* [🌐 Deployed Server](#-deployed-server)
-* [🔗 Related Repos](#-related-repos)
-* [🚀 Deployment](#-deployment)
-* [🧰 Tech Stack](#-tech-stack)
-* [🛠 Installation](#-installation)
-* [📄 License](#-license)
-* [📬 Contact](#-contact)
+- [🌐 Deployed Server](#-deployed-server)
+- [🔗 Related Repos](#-related-repos)
+- [🚀 Deployment](#-deployment)
+- [🧰 Tech Stack](#-tech-stack)
+- [🛠 Installation](#-installation)
+- [📄 License](#-license)
+- [📬 Contact](#-contact)
 
 ## 🌐 Deployed Server
 
-* 🔗 [Live API Server](https://courtiq.onrender.com)
+- 🔗 [Live API Server](https://courtiq.onrender.com)
 
 ## 🔗 Related Repos
 
-* 🎯 Frontend: [court-iq](https://github.com/jorammercado/court-iq)
-* 🧠 Search Microservice: [court-iq-search](https://github.com/jorammercado/court-iq-search)
+- 🎯 Frontend: [court-iq](https://github.com/jorammercado/court-iq)
+- 🧠 Search Microservice: [court-iq-search](https://github.com/jorammercado/court-iq-search)
 
 ## 🚀 Deployment
 
-* Hosted on: [Render](https://render.com)
+- Hosted on: [Render](https://render.com)
 
 ## 🧰 Tech Stack
 
-* **Runtime**: Node.js
-* **Framework**: Express.js
-* **Database**: PostgreSQL
-* **Libraries**: Axios, CORS, dotenv, pg-promise
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Database**: PostgreSQL
+- **Libraries**: Axios, CORS, dotenv, pg-promise
 
 ## 🛠 Installation
 

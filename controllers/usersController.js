@@ -1,135 +1,135 @@
-const express = require("express")
-const bcrypt = require("bcryptjs")
+const express = require('express')
+const bcrypt = require('bcryptjs')
 
 const {
-    getOneUserByEmail,
-    getOneUserByUserName,
-    createUser,
-    deleteUser,
-    updateUser
-} = require("../queries/users.js")
+  getOneUserByEmail,
+  getOneUserByUserName,
+  createUser,
+  deleteUser,
+  updateUser,
+} = require('../queries/users.js')
 const {
-    checkUsername,
-    checkEmail,
-    checkPassword,
-    checkUserIndex,
-    checkUsernameExists,
-    checkEmailExists,
-    checkUsernameExistsOtherThanSelf,
-    checkEmailExistsOtherThanSelf
-} = require("../validations/checkUser.js")
+  checkUsername,
+  checkEmail,
+  checkPassword,
+  checkUserIndex,
+  checkUsernameExists,
+  checkEmailExists,
+  checkUsernameExistsOtherThanSelf,
+  checkEmailExistsOtherThanSelf,
+} = require('../validations/checkUser.js')
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 const users = express.Router()
 
 // LOGIN ROUTE TO USER ACCOUNT
-users.post("/login", checkEmail, checkPassword, async (req, res) => {
-    let oneUser = await getOneUserByEmail(req.body)
-    if (oneUser) {
-        bcrypt.compare(req.body.password, oneUser.password).then((isMatch) => {
-            if (isMatch) {
-                oneUser.password = "hidden"
-                res.status(200).json({ status: "Login Success", login: true, oneUser })
-            }
-            else {
-                res.status(400).json({
-                    error: "incorect password/email combo",
-                    status: "Login Failure",
-                    login: false
-                })
-            }
+users.post('/login', checkEmail, checkPassword, async (req, res) => {
+  let oneUser = await getOneUserByEmail(req.body)
+  if (oneUser) {
+    bcrypt.compare(req.body.password, oneUser.password).then((isMatch) => {
+      if (isMatch) {
+        oneUser.password = 'hidden'
+        res.status(200).json({ status: 'Login Success', login: true, oneUser })
+      } else {
+        res.status(400).json({
+          error: 'incorect password/email combo',
+          status: 'Login Failure',
+          login: false,
         })
-    }
-    else {
-        res.status(404).json({ error: `user with ${req.body.email} email not found!` })
-    }
+      }
+    })
+  } else {
+    res.status(404).json({ error: `user with ${req.body.email} email not found!` })
+  }
 })
 
 // SIGN UP ROUTE, CREATE USER
-users.post("/", checkUsername,
-    checkEmail,
-    checkPassword,
-    checkUsernameExists,
-    checkEmailExists, async (req, res) => {
-        const newUser = req.body
-        bcrypt.genSalt(10, async (err, salt) => {
-            bcrypt.hash(newUser.password, salt, async (err, hash) => {
-                if (err) throw err
-                newUser.password = hash
-                try {
-                    newUser.photourl = !newUser.photourl ? "profile image" : newUser.photourl
-                    newUser.displayname = !newUser.displayname ? "first last" : newUser.displayname
-                    newUser.firstname = !newUser.firstname ? "unknown first name" : newUser.firstname
-                    newUser.lastname = !newUser.lastname ? "unknown last name" : newUser.lastname
-                    newUser.active = !newUser.active ? true : newUser.active
-                    newUser.about = !newUser.about ? "about me" : newUser.about
-                    newUser.dob = !newUser.dob ? "1/1/2024" : newUser.dob
-                    let createdUser = await createUser(newUser)
-                    if (createdUser.user_id) {
-                        createdUser.password = "hidden"
-                        res.status(200).json(createdUser)
-                    }
-                    else {
-                        res.status(400).json({
-                            error: `error creating user, sql-res:${createdUser.err}`
-                        })
-                    }
-                }
-                catch (error) {
-                    res.status(400).json({ error: "error creating user" })
-                }
+users.post(
+  '/',
+  checkUsername,
+  checkEmail,
+  checkPassword,
+  checkUsernameExists,
+  checkEmailExists,
+  async (req, res) => {
+    const newUser = req.body
+    bcrypt.genSalt(10, async (err, salt) => {
+      bcrypt.hash(newUser.password, salt, async (err, hash) => {
+        if (err) throw err
+        newUser.password = hash
+        try {
+          newUser.photourl = !newUser.photourl ? 'profile image' : newUser.photourl
+          newUser.displayname = !newUser.displayname ? 'first last' : newUser.displayname
+          newUser.firstname = !newUser.firstname ? 'unknown first name' : newUser.firstname
+          newUser.lastname = !newUser.lastname ? 'unknown last name' : newUser.lastname
+          newUser.active = !newUser.active ? true : newUser.active
+          newUser.about = !newUser.about ? 'about me' : newUser.about
+          newUser.dob = !newUser.dob ? '1/1/2024' : newUser.dob
+          let createdUser = await createUser(newUser)
+          if (createdUser.user_id) {
+            createdUser.password = 'hidden'
+            res.status(200).json(createdUser)
+          } else {
+            res.status(400).json({
+              error: `error creating user, sql-res:${createdUser.err}`,
             })
-        })
+          }
+        } catch (error) {
+          res.status(400).json({ error: 'error creating user' })
+        }
+      })
     })
+  }
+)
 
 // DELETE USER
-users.delete("/:user_id", checkUserIndex, async (req, res) => {
-    try {
-        const { user_id } = req.params
-        const deletedUser = await deleteUser(user_id)
-        if (deletedUser) {
-            deletedUser.password = ""
-            res.status(200).json(deletedUser)
-        }
-        else {
-            res.status(404).json({ error: "user not found => not deleted" })
-        }
+users.delete('/:user_id', checkUserIndex, async (req, res) => {
+  try {
+    const { user_id } = req.params
+    const deletedUser = await deleteUser(user_id)
+    if (deletedUser) {
+      deletedUser.password = ''
+      res.status(200).json(deletedUser)
+    } else {
+      res.status(404).json({ error: 'user not found => not deleted' })
     }
-    catch (error) {
-        res.status(400).json({ error: `${error}, error in delete server path` })
-    }
+  } catch (error) {
+    res.status(400).json({ error: `${error}, error in delete server path` })
+  }
 })
 
 // UPDATE USER
-users.put("/:user_id", checkUserIndex,
-    checkUsernameExistsOtherThanSelf,
-    checkEmailExistsOtherThanSelf,
-    async (req, res) => {
-        try {
-            const { user_id } = req.params
-            const userToUpdate = req.body
-            userToUpdate.displayname = !userToUpdate.displayname ? "first last" : userToUpdate.displayname
-            userToUpdate.photourl = !userToUpdate.photourl ? "profile image" : userToUpdate.photourl
-            userToUpdate.firstname = !userToUpdate.firstname ? "unknown first name" : userToUpdate.firstname
-            userToUpdate.lastname = !userToUpdate.lastname ? "unknown last name" : userToUpdate.lastname
-            userToUpdate.about = !userToUpdate.about ? "about me" : userToUpdate.about
-            userToUpdate.active = !userToUpdate.active ? true : userToUpdate.active
-            userToUpdate.dob = !userToUpdate.dob ? "00/00/0000" : userToUpdate.dob
-            let updatedUser = await updateUser(user_id, userToUpdate)
-            if (updatedUser.user_id) {
-                updatedUser.password = "hidden"
-                res.status(200).json(updatedUser)
-            }
-            else {
-                res.status(400).json({
-                    error: `error in updating, try again`
-                })
-            }
-        }
-        catch (error) {
-            res.status(400).json({ error: `${error}, error in user edit route, in controller` })
-        }
-    })
-
+users.put(
+  '/:user_id',
+  checkUserIndex,
+  checkUsernameExistsOtherThanSelf,
+  checkEmailExistsOtherThanSelf,
+  async (req, res) => {
+    try {
+      const { user_id } = req.params
+      const userToUpdate = req.body
+      userToUpdate.displayname = !userToUpdate.displayname ? 'first last' : userToUpdate.displayname
+      userToUpdate.photourl = !userToUpdate.photourl ? 'profile image' : userToUpdate.photourl
+      userToUpdate.firstname = !userToUpdate.firstname
+        ? 'unknown first name'
+        : userToUpdate.firstname
+      userToUpdate.lastname = !userToUpdate.lastname ? 'unknown last name' : userToUpdate.lastname
+      userToUpdate.about = !userToUpdate.about ? 'about me' : userToUpdate.about
+      userToUpdate.active = !userToUpdate.active ? true : userToUpdate.active
+      userToUpdate.dob = !userToUpdate.dob ? '00/00/0000' : userToUpdate.dob
+      let updatedUser = await updateUser(user_id, userToUpdate)
+      if (updatedUser.user_id) {
+        updatedUser.password = 'hidden'
+        res.status(200).json(updatedUser)
+      } else {
+        res.status(400).json({
+          error: `error in updating, try again`,
+        })
+      }
+    } catch (error) {
+      res.status(400).json({ error: `${error}, error in user edit route, in controller` })
+    }
+  }
+)
 
 module.exports = users
