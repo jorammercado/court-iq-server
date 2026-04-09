@@ -1,8 +1,10 @@
 # 🏀 Court-IQ Backend Server
 
-This is the **Express.js backend service** for the **Court-IQ** platform — a basketball analytics and sports betting application. It hosts player images, includes infrastructure for user account management (while authentication is currently handled via Firebase on the frontend), and stores a fully structured archive of **50+ years of NBA data**, ready for frontend integration.
+This is the **Express.js backend service** for the **Court-IQ** platform — a basketball analytics and sports betting application. It serves player images, provides historical NBA data via RESTful endpoints, and forwards search requests to a Flask-based microservice used for the prototype natural language search feature.
 
-Additionally, it serves as middleware, forwarding search queries to a Flask-based microservice: [court-iq-search](https://github.com/jorammercado/court-iq-search). This powers the prototype natural language search bar.
+Live basketball stats, standings, and betting data on the frontend are consumed directly from third-party APIs rather than this backend service.
+
+Authentication is handled via Firebase on the frontend. This service includes supporting infrastructure for user-related data that could be utilized for future application expansion.
 
 ## 📁 Contents
 
@@ -10,6 +12,7 @@ Additionally, it serves as middleware, forwarding search queries to a Flask-base
 - [🔗 Related Repos](#-related-repos)
 - [🚀 Deployment](#-deployment)
 - [🧰 Tech Stack](#-tech-stack)
+- [⚙️ Backend Functionality](#-backend-functionality)
 - [🛠 Installation](#-installation)
 - [📄 License](#-license)
 - [📬 Contact](#-contact)
@@ -34,6 +37,12 @@ Additionally, it serves as middleware, forwarding search queries to a Flask-base
 - **Database**: PostgreSQL
 - **Libraries**: Axios, CORS, dotenv, pg-promise
 
+## ⚙️ Backend Functionality
+
+- Serve player images via RESTful endpoints
+- Provide historical NBA data from PostgreSQL (not actively consumed by the frontend)
+- Forward search requests to the Flask-based search microservice
+
 ## 🛠 Installation
 
 ### 1. Clone the repository
@@ -57,7 +66,7 @@ PG_HOST=localhost
 PG_PORT=5432
 PG_DATABASE=capstone_dev
 PG_USER=postgres
-FLASK_APP_URL=
+FLASK_APP_URL= # URL of the court-iq-search microservice
 ```
 
 ### 4. Ensure PostgreSQL is running locally
